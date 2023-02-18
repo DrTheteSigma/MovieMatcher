@@ -1,0 +1,26 @@
+{
+  "name": "moviematcher",
+  "version": "1.0.0",
+  "description": "match movies with friends",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DrTheteSigma/MovieMatcher.git"
+  },
+  "author": "Hashem Alsailani",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DrTheteSigma/MovieMatcher/issues"
+  },
+  "homepage": "https://github.com/DrTheteSigma/MovieMatcher#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
