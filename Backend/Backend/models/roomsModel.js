@@ -2395,10 +2395,10 @@ shuffle(list)
 
 
 const roomSchema = mongoose.Schema({
-    text: {
-        type: String, 
-        required: [true, "Please add a text value"]
-    },
+    //text: {
+      //  type: String, 
+        //required: [true, "Please add a text value"]
+    //},
     MatchedMovies: {
         type: [Object],
         default: []

@@ -1,15 +1,18 @@
 const express = require("express")
 const router = express.Router()
-const {getGoals, createGoals, putmovie1, putmovie2, matcherfind} = require('../controller/roomController')
+const {getGoals, createGoals, putmovie, matcherfind, getAvailable, getRoom} = require('../controller/roomController')
 
 
 router.get('/', getGoals)
 router.post('/create', createGoals)
 
-router.put("/putmovie1", putmovie1)
-router.put("/putmovie2", putmovie2)
+router.post("/putmovie1", putmovie)
 
-router.get("/available")
+
+router.get("/available", getAvailable)
+
+router.post("/getroom", getRoom )
+
 
 router.get("/matches", matcherfind)
 

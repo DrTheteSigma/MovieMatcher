@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, Image, Button, StyleSheet } from 'react-native';
+import SyncStorage from 'sync-storage';
 
 function MovieList({ movies }) {
   const [index, setIndex] = useState(0);
@@ -12,7 +13,43 @@ function MovieList({ movies }) {
     }
   };
 
+
+  const id = SyncStorage.get('id');
+  const playnum = SyncStorage.get('PlayerNum');
+
+
+
   const movie = movies[index];
+
+
+ 
+
+  const addtolist = () => {
+        return fetch('https://88fc-75-102-132-145.ngrok.io/api/room/putmovie1', {
+    method: 'POST',
+    headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        roomId: id,
+        themovie: index,
+        PlayerNum: playnum
+    })
+    })
+   
+    .catch(error => {
+    console.error(error);
+    throw error;
+    }, 
+
+    console.log("running")
+    );
+
+
+  }
+  
+
 
   console.log(movie)
 
@@ -28,7 +65,7 @@ function MovieList({ movies }) {
       <View style={styles.buttonContainer}>
         <Button title="NO" onPress={handleNext} style={[styles.button, styles.leftButton]} />
         
-        <Button title="YES" onPress={handleNext} style={[styles.button, styles.rightButton]} />
+        <Button title="YES" onPress={addtolist} style={[styles.button, styles.rightButton]} />
       </View>
     </View>
   );
