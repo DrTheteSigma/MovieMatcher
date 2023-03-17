@@ -38,7 +38,7 @@ const createGoals = asyncHandler( async (req,res) =>{
 })
 
 
-const putmovie1 = asyncHandler( async (req, res) =>{
+const putmovie = asyncHandler( async (req, res) =>{
 
    
     playnum = req.body.playerNum
