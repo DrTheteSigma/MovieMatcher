@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, Image, Button, StyleSheet } from 'react-native';
 import SyncStorage from 'sync-storage';
 
-function MovieList({ movies }) {
+function MatchedCard({ movies }) {
   const [index, setIndex] = useState(0);
 
   const handleNext = () => {
@@ -20,41 +20,13 @@ function MovieList({ movies }) {
 
 
   const movie = movies[index];
-
-
- 
-
-  const addtolist = () => {
-        return fetch('https://88fc-75-102-132-145.ngrok.io/api/room/putmovie1', {
-    method: 'POST',
-    headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-        roomId: id,
-        themovie: index,
-        PlayerNum: playnum
-    })
-    })
-   
-    .catch(error => {
-    console.error(error);
-    throw error;
-    }, 
-
-    console.log("running"),
-    handleNext()
-    );
-
-  
-  }
   
 
 
   console.log(movie)
 
   return (
+    
     <View style={styles.container}>
       <Image source={{ uri: movie["image"] }} style={styles.image} />
       <View style={styles.infoContainer}>
@@ -64,9 +36,9 @@ function MovieList({ movies }) {
         <Text style={styles.rating}>IMDB Rating: {movie["rating"]}</Text>
       </View>
       <View style={styles.buttonContainer}>
-        <Button title="NO" onPress={handleNext} style={[styles.button, styles.leftButton]} />
+        <Button title="Next" onPress={handleNext} style={[styles.button, styles.leftButton]} />
         
-        <Button title="YES" onPress={addtolist} style={[styles.button, styles.rightButton]} />
+        
       </View>
     </View>
   );
@@ -108,7 +80,6 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
       flexDirection: 'row',
-      justifyContent: 'space-between',
       marginTop: 20,
     },
     button: {
@@ -127,4 +98,4 @@ const styles = StyleSheet.create({
   
   
 
-export default MovieList;
+export default MatchedCard;

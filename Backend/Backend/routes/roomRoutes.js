@@ -14,7 +14,7 @@ router.get("/available", getAvailable)
 router.post("/getroom", getRoom )
 
 
-router.get("/matches", matcherfind)
+router.post("/matches", matcherfind)
 
 
 

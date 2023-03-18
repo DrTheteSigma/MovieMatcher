@@ -12,7 +12,7 @@ const PlayerNum = SyncStorage.get('PlayerNum');
 
 
 const roomfind = () => {
-        return fetch('https://88fc-75-102-132-145.ngrok.io/api/room/getroom', {
+        return fetch('https://4754-75-102-132-145.ngrok.io/api/room/getroom', {
     method: 'POST',
     headers: {
         Accept: 'application/json',

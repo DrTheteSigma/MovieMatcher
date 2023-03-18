@@ -85,10 +85,17 @@ const matcherfind = asyncHandler( async (req, res) =>{
     const rooms = await roomsModel.findById(roomId);
     
 
-    user1 = rooms.User1
-    user2 = rooms.User2
+
+
+    user1 = rooms["User1"]
+    user2 = rooms["User2"]
 
     matches = findMutualObjects(user1, user2)
+
+    await rooms.updateOne({ $set: { MatchedMovies: matches } });
+
+    const updatedRooms = await roomsModel.findById(roomId);
+    res.status(200).json(updatedRooms["MatchedMovies"]);
 
     console.log(matches)
 
