@@ -8,7 +8,7 @@ let roomid;
 useState
 
 const roomCreate = () => {
-    return fetch('https://a815-75-102-132-145.ngrok.io/api/room/create', {
+    return fetch('https://3c74-131-247-226-124.ngrok.io/api/room/create', {
       method: 'POST',
       headers: {
         Accept: 'application/json',

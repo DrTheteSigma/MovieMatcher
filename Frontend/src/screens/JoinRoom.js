@@ -7,7 +7,7 @@ const JoinRoom = ({ navigation }) => {
 
   const handleJoinRoom = async () => {
     // Handle joining the room with the entered ID
-    const response = await fetch('https://a815-75-102-132-145.ngrok.io/api/room/available', {
+    const response = await fetch('https://3c74-131-247-226-124.ngrok.io/api/room/available', {
                     method: 'POST',
                     headers: {
                         Accept: 'application/json',
