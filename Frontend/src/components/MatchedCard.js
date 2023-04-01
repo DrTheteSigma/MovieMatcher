@@ -14,10 +14,6 @@ function MatchedCard({ movies }) {
   };
 
 
-  const id = SyncStorage.get('id');
-  const playnum = SyncStorage.get('PlayerNum');
-
-
 
   const movie = movies[index];
   

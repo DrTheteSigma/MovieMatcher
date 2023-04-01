@@ -10,6 +10,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import CreateRoom from './src/screens/CreateRoom';
 import Menu from './src/screens/Menu';
+import JoinRoom from './src/screens/JoinRoom';
 
 const Stack = createStackNavigator();
 
@@ -20,7 +21,8 @@ export default function App() {
       <Stack.Navigator>
         <Stack.Screen name="HomeScreen" component={HomeScreen} />
         <Stack.Screen name="CreateRoom" component={CreateRoom}  />
-        <Stack.Screen name="Menu" component={Menu}   />
+        <Stack.Screen name="Menu" component={Menu}  />
+        <Stack.Screen name="JoinRoom" component={JoinRoom}></Stack.Screen>
 
       </Stack.Navigator>
     </NavigationContainer>

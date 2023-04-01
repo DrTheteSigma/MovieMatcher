@@ -7,14 +7,14 @@ import Selector from '../components/Selector'
 import Settings from '../components/Settings'
 
 
-const Menu = ({  navigation }) => {
+const Menu = ({ navigation }) => {
     const Tab = createBottomTabNavigator()
    
   return (
     <NavigationContainer independent={true}>
         <Tab.Navigator>
             <Tab.Screen name="selector" component={Selector}></Tab.Screen>
-            <Tab.Screen name="Matched" component={MatchedMovies}></Tab.Screen>
+            <Tab.Screen name="Matched" component={MatchedMovies} options={{unmountOnBlur: true}}></Tab.Screen>
             <Tab.Screen name="settings" component={Settings} ></Tab.Screen>
         </Tab.Navigator>
     </NavigationContainer>

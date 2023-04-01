@@ -18,7 +18,7 @@ const HomeScreen = ({ navigation }) => {
 
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate('MatchPage')}>
+          onPress={() => navigation.navigate('JoinRoom')}>
           <Text style={styles.buttonText}>Join A Room!</Text>
         </TouchableOpacity>
 

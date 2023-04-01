@@ -1,69 +1,47 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, ImageBackground, View, Text, TouchableOpacity, Button, StatusBar } from 'react-native';
 import SyncStorage from 'sync-storage';
 import MatchedCard from './MatchedCard';
 
+const MatchedMovies = () => {
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-
-const id = SyncStorage.get('id');
-const PlayerNum = SyncStorage.get('PlayerNum');
-
-
-
-
-
-const roomfind = async () => {
-    try {
-        const response = await fetch('https://4754-75-102-132-145.ngrok.io/api/room/matches', {
+  useEffect(() => {
+    const roomfind = async () => {
+      try {
+        const roomId = await SyncStorage.get('id');
+        const response = await fetch('https://a815-75-102-132-145.ngrok.io/api/room/matches', {
           method: 'POST',
           headers: {
             Accept: 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            roomId: id
-          })
+            roomId: roomId,
+          }),
         });
-    
+
         const data = await response.json();
         console.log(data);
-        return data;
+        setMovies(data);
+        setLoading(false);
       } catch (error) {
         console.error(error);
         throw error;
       }
+    };
+
+    roomfind();
+  }, []);
+
+  if (loading) {
+    return <Text>getting data...</Text>;
+  } else if (movies.length === 0) {
+    return <Text>No matches found for the given room ID.</Text>;
+  } else {
+    return <MatchedCard movies={movies} />;
   }
-  
+};
 
-
-
-
-  const MatchedMovies = () => {
-    const [movies, setMovies] = useState([]);
-    const [loading, setLoading] = useState(true);
-  
-    useEffect(() => {
-      roomfind()
-        .then((imdb) => {
-          setMovies(imdb);
-          setLoading(false);
-        })
-        .catch((error) => console.error(error));
-    }, []);
-  
-    if (loading) {
-      return <Text>getting data...</Text>;
-    }
-    else{
-        return (
-            <MatchedCard movies={movies} />
-         
-        );
-    }
-
-    
-  };
-  
-
-
-export default MatchedMovies
+export default MatchedMovies;

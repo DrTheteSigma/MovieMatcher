@@ -9,7 +9,7 @@ router.post('/create', createGoals)
 router.post("/putmovie1", putmovie)
 
 
-router.get("/available", getAvailable)
+router.post("/available", getAvailable)
 
 router.post("/getroom", getRoom )
 

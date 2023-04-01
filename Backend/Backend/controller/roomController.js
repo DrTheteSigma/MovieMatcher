@@ -41,21 +41,22 @@ const createGoals = asyncHandler( async (req,res) =>{
 const putmovie = asyncHandler( async (req, res) =>{
 
    
-    playnum = req.body.playerNum
-    roomId = req.body.roomId
-    index = req.body.themovie
+    const playnum = req.body.PlayerNum
+    const roomId = req.body.roomId
+    const index = req.body.themovie
     
 
     const rooms = await roomsModel.findById(roomId);
 
     list = rooms["IMDB"];
     list = list[index]
-    
+    console.log(playnum)
     // Update the user array with a new element
-    if(playnum=1){
+    if(playnum==1){
+        console.log("player 1")
         await rooms.updateOne({ $push: { User1: list } });
     }
-    if(playnum=2){
+    if(playnum==2){
         await rooms.updateOne({ $push: { User2: list } });
     }
 
@@ -63,8 +64,8 @@ const putmovie = asyncHandler( async (req, res) =>{
     // Fetch the updated document again
     const updatedRooms = await roomsModel.findById(roomId);
 
-    console.log(roomId)
-    console.log(updatedRooms);
+    //console.log(roomId)
+    //console.log(updatedRooms);
 
     
 
@@ -97,25 +98,29 @@ const matcherfind = asyncHandler( async (req, res) =>{
     const updatedRooms = await roomsModel.findById(roomId);
     res.status(200).json(updatedRooms["MatchedMovies"]);
 
-    console.log(matches)
+    //console.log(matches)
 
     
 
 })
 
-const getAvailable = asyncHandler (async(req, res) =>{
+const mongoose = require('mongoose');
 
-    roomId = req.body.roomId
+const getAvailable = asyncHandler(async (req, res) => {
+  console.log('working');
+  const roomId = req.body.roomId;
+  if (!mongoose.Types.ObjectId.isValid(roomId)) {
+    return res.status(400).json({Available: false });
+  }
+  const room = await roomsModel.findById(roomId);
 
-    const room = await roomsModel.findById(roomId);
+  if (room) {
+    res.status(200).json({ Available: true });
+  } else {
+    res.status(200).json({ Available: false });
+  }
+});
 
-    if(room){
-        res.status(200).json({Available: true})
-    }else{
-        res.status(200).json({Available: false})
-    }
-
-})
 
 const getRoom = asyncHandler (async (req,res) =>{
     roomId = req.body.roomId
