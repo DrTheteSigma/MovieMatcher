@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import SyncStorage from 'sync-storage';
 
@@ -6,13 +6,17 @@ const Settings = ({ route }) => {
   const result = SyncStorage.get('id');
   const playerNum = SyncStorage.get('PlayerNum');
 
-  const [num, setNum] = useState(0);
-
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{num}</Text>
-      <Text style={styles.subtitle}>Your room number is {result}</Text>
-      <Text style={styles.subtitle}>Your player number is {playerNum}</Text>
+      <Text style={styles.title}>Settings</Text>
+      <View style={styles.settingItem}>
+        <Text style={styles.settingLabel}>Room Number:</Text>
+        <Text style={styles.settingValue}>{result}</Text>
+      </View>
+      <View style={styles.settingItem}>
+        <Text style={styles.settingLabel}>Player Number:</Text>
+        <Text style={styles.settingValue}>{playerNum}</Text>
+      </View>
     </View>
   );
 };
@@ -20,18 +24,30 @@ const Settings = ({ route }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: '#f8f8f8',
+    padding: 20,
   },
   title: {
-    fontSize: 40,
+    fontSize: 30,
     fontWeight: 'bold',
-    color: 'black',
+    color: '#333',
     marginBottom: 20,
   },
-  subtitle: {
-    fontSize: 20,
-    color: 'black',
+  settingItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ddd',
+  },
+  settingLabel: {
+    fontSize: 18,
+    color: '#333',
+  },
+  settingValue: {
+    fontSize: 18,
+    color: '#888',
   },
 });
 

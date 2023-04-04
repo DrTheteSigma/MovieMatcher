@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { StyleSheet, ImageBackground, View, Text, TouchableOpacity, Button, StatusBar } from 'react-native';
+import { StyleSheet, ImageBackground, View, Text, TouchableOpacity, Button, StatusBar, ActivityIndicator } from 'react-native';
 import SyncStorage from 'sync-storage';
 import MovieList from './MovieCard';
 
@@ -54,11 +54,23 @@ const Selector = () => {
     }, [id]);
 
     if (loading) {
-        return <Text>getting data...</Text>;
+        return (
+            <View style={styles.loadingContainer}>
+              <ActivityIndicator size="large" />
+            </View>
+          )
     } else {
         return <MovieList movies={movies} />;
     }
 };
 
+const styles = StyleSheet.create({
+    loadingContainer: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    // other styles...
+  });
 
 export default Selector
