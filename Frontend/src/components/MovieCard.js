@@ -25,7 +25,7 @@ function MovieList({ movies }) {
  
 
   const addtolist = () => {
-        return fetch('https://3c74-131-247-226-124.ngrok.io/api/room/putmovie1', {
+        return fetch('18.223.195.32:3001/api/room/putmovie1', {
     method: 'POST',
     headers: {
         Accept: 'application/json',

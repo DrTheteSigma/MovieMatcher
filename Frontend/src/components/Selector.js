@@ -31,7 +31,7 @@ const Selector = () => {
         if (!id) return;
         const roomfind = async () => {
             try {
-                const response = await fetch('https://3c74-131-247-226-124.ngrok.io/api/room/getroom', {
+                const response = await fetch('18.223.195.32:3001/api/room/getroom', {
                     method: 'POST',
                     headers: {
                         Accept: 'application/json',
