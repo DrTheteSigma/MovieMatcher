@@ -4,33 +4,31 @@ import SyncStorage from 'sync-storage';
 
 const JoinRoom = ({ navigation }) => {
   const [roomId, setRoomId] = useState('');
+  const [selectedUser, setSelectedUser] = useState('user1');
 
   const handleJoinRoom = async () => {
     // Handle joining the room with the entered ID
-    const response = await fetch('18.223.195.32:3001/api/room/available', {
-                    method: 'POST',
-                    headers: {
-                        Accept: 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        roomId: roomId
-                    })
-                });
+    const response = await fetch('http://157.230.86.79:3001/api/room/available', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        roomId: roomId
+      })
+    });
     let data = await response.json();
-    data = data["Available"]
-    console.log(data)
-    if(data != true){
-        alert("Please enter a correct Room ID")
-    }else{
-        SyncStorage.set('id', roomId);
-        SyncStorage.set('PlayerNum', 2);
-        navigation.navigate('Menu')
+    data = data["Available"];
+    console.log(data);
+    if (data !== true) {
+      alert('Please enter a correct Room ID');
+    } else {
+      SyncStorage.set('id', roomId);
+      SyncStorage.set('PlayerNum', selectedUser === 'user1' ? 1 : 2);
+      navigation.navigate('Menu');
     }
-
-    
-    
-  }
+  };
 
   return (
     <View style={styles.container}>
@@ -42,6 +40,24 @@ const JoinRoom = ({ navigation }) => {
         placeholder="Room ID"
         placeholderTextColor="#a6a6a6"
       />
+      <View style={styles.radioButtonGroup}>
+        <View style={styles.radioButton}>
+          <TouchableOpacity
+            style={selectedUser === 'user1' ? styles.radioButtonSelected : styles.radioButtonUnselected}
+            onPress={() => setSelectedUser('user1')}
+          >
+            <Text style={styles.radioButtonText}>User 1</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.radioButton}>
+          <TouchableOpacity
+            style={selectedUser === 'user2' ? styles.radioButtonSelected : styles.radioButtonUnselected}
+            onPress={() => setSelectedUser('user2')}
+          >
+            <Text style={styles.radioButtonText}>User 2</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
       <TouchableOpacity style={styles.button} onPress={handleJoinRoom}>
         <Text style={styles.buttonText}>Join Room</Text>
       </TouchableOpacity>
@@ -73,6 +89,30 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#333333',
     backgroundColor: '#FFFFFF',
+  },
+  radioButtonGroup: {
+    flexDirection: 'row',
+    marginBottom: 20,
+  },
+  radioButton: {
+    marginRight: 20,
+  },
+  radioButtonSelected: {
+    backgroundColor: '#5DBCD2',
+    borderRadius: 10,
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+  },
+  radioButtonUnselected: {
+    backgroundColor: '#E8E8E8',
+    borderRadius: 10,
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+  },
+  radioButtonText: {
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
   button: {
     width: '60%',

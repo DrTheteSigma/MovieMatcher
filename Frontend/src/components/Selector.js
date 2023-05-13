@@ -31,7 +31,7 @@ const Selector = () => {
         if (!id) return;
         const roomfind = async () => {
             try {
-                const response = await fetch('18.223.195.32:3001/api/room/getroom', {
+                const response = await fetch('http://157.230.86.79:3001/api/room/getroom', {
                     method: 'POST',
                     headers: {
                         Accept: 'application/json',
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
     },
-    // other styles...
+   
   });
 
 export default Selector

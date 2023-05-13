@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, Image, Button, StyleSheet } from 'react-native';
 import SyncStorage from 'sync-storage';
+import CustomButton from './CustomButton';
 
 function MovieList({ movies }) {
   const [index, setIndex] = useState(0);
@@ -25,7 +26,7 @@ function MovieList({ movies }) {
  
 
   const addtolist = () => {
-        return fetch('18.223.195.32:3001/api/room/putmovie1', {
+        return fetch('http://157.230.86.79:3001/api/room/putmovie1', {
     method: 'POST',
     headers: {
         Accept: 'application/json',
@@ -60,17 +61,26 @@ function MovieList({ movies }) {
       <View style={styles.infoContainer}>
         <Text style={styles.title}>{movie["title"]}</Text>
         <Text style={styles.year}>Year: {movie["year"]}</Text>
-        <Text style={styles.description}>Description: {movie["description"]}</Text>
+        <Text style={styles.description}>{movie["description"]}</Text>
         <Text style={styles.rating}>IMDB Rating: {movie["rating"]}</Text>
       </View>
       <View style={styles.buttonContainer}>
-        <Button title="NO" onPress={handleNext} style={[styles.button, styles.leftButton]} />
-        
-        <Button title="YES" onPress={addtolist} style={[styles.button, styles.rightButton]} />
+        <CustomButton
+          title="Not Interesting"
+         onPress={handleNext}
+          style={[styles.button, styles.leftButton, { backgroundColor: '#00308F' }]}
+        />
+      <CustomButton
+        title="Interesting"
+        onPress={addtolist}
+        style={[styles.button, styles.rightButton, { backgroundColor: '#00308F' }]}
+      />
       </View>
     </View>
   );
 }
+
+
 
 const styles = StyleSheet.create({
     container: {
@@ -101,6 +111,10 @@ const styles = StyleSheet.create({
     description: {
       fontSize: 16,
       marginBottom: 5,
+      justifyContent: 'center',
+      alignItems: 'center',
+      textAlign: 'center',
+
     },
     rating: {
       fontSize: 16,
@@ -118,10 +132,13 @@ const styles = StyleSheet.create({
     leftButton: {
       marginRight: 10,
       backgroundColor: 'red',
-      fontSize: 20
+      padding: 10,
+      margin: 10,
     },
     rightButton: {
-      fontSize: 20
+      backgroundColor: 'green',
+      padding: 10,
+      margin: 10,
     },
   });
   

@@ -11,7 +11,7 @@ const MatchedMovies = () => {
     const roomfind = async () => {
       try {
         const roomId = await SyncStorage.get('id');
-        const response = await fetch('18.223.195.32:3001/api/room/matches', {
+        const response = await fetch('http://157.230.86.79:3001/api/room/matches', {
           method: 'POST',
           headers: {
             Accept: 'application/json',
