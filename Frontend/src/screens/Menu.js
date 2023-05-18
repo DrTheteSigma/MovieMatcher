@@ -36,7 +36,7 @@ const Menu = ({ navigation }) => {
         <Tab.Screen name="Matched" component={MatchedMovies} options={{unmountOnBlur: true}} 
         
         
-        options={{
+        options1={{
           tabBarIcon: ({ color, size }) => (
             <Icon name="check" size={size} color={color} />
           ),
@@ -46,7 +46,7 @@ const Menu = ({ navigation }) => {
         <Tab.Screen name="settings" component={Settings}
         
         
-        options={{
+        options2={{
           tabBarIcon: ({ color, size }) => (
             <Icon name="settings-helper" size={size} color={color} />
           ),

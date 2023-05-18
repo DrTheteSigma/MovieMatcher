@@ -5,6 +5,17 @@
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "42984d0a-88bb-4037-9efd-976b0e3bedc5"
+      }
+    },
+    "android": {
+      "package": "com.halsailani.Backend"
+    },
+    "ios": {
+      "bundleIdentifier": "com.halsailani.Backend"
+    }
   }
 }

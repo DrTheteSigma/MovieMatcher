@@ -23,10 +23,8 @@ export default function App() {
         <Stack.Screen name="CreateRoom" component={CreateRoom}  />
         <Stack.Screen name="Menu" component={Menu}  />
         <Stack.Screen name="JoinRoom" component={JoinRoom}></Stack.Screen>
-
       </Stack.Navigator>
     </NavigationContainer>
-  
   );
 }
 
