@@ -26,7 +26,7 @@ function MovieList({ movies }) {
  
 
   const addtolist = () => {
-        return fetch('http://157.230.86.79:3001/api/room/putmovie1', {
+        return fetch('http://3.141.165.128:8001/api/room/putmovie1', {
     method: 'POST',
     headers: {
         Accept: 'application/json',

@@ -8,7 +8,7 @@ let roomid;
 useState
 
 const roomCreate = () => {
-    return fetch('http://157.230.86.79:3001/api/room/create', {
+    return fetch('http://3.141.165.128:8001/api/room/create', {
       method: 'POST',
       headers: {
         Accept: 'application/json',

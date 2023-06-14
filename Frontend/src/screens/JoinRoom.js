@@ -8,7 +8,7 @@ const JoinRoom = ({ navigation }) => {
 
   const handleJoinRoom = async () => {
     // Handle joining the room with the entered ID
-    const response = await fetch('http://157.230.86.79:3001/api/room/available', {
+    const response = await fetch('http://3.141.165.128:8001/api/room/available', {
       method: 'POST',
       headers: {
         Accept: 'application/json',

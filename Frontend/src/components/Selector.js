@@ -31,7 +31,7 @@ const Selector = () => {
         if (!id) return;
         const roomfind = async () => {
             try {
-                const response = await fetch('http://157.230.86.79:3001/api/room/getroom', {
+                const response = await fetch('http://3.141.165.128:8001/api/room/getroom', {
                     method: 'POST',
                     headers: {
                         Accept: 'application/json',
