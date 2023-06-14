@@ -4,8 +4,8 @@
   "description": "match movies with friends",
   "main": "server.js",
   "scripts": {
-    "start": "node backend/server.js",
-    "server": "nodemon backend/server.js"
+    "start": "node Backend/server.js",
+    "server": "nodemon Backend/server.js"
   },
   "repository": {
     "type": "git",
