@@ -1,11 +1,9 @@
 const mongoose = require('mongoose')
 
-const url = "mongodb+srv://hashem:hashem@matchercluster.skka9j9.mongodb.net/?retryWrites=true&w=majority"
-
 const connectDB  = async () =>{
     try{
-        console.log(url)
-        const conn = await mongoose.connect(url)
+        console.log(process.env.MONGO_URL)
+        const conn = await mongoose.connect(process.env.MONGO_URL)
 
         console.log(`MomgoDB Connected: ${conn.connection.host}`)
     }catch(error){
