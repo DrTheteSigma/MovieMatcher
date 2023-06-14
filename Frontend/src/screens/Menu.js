@@ -24,34 +24,35 @@ const Menu = ({ navigation }) => {
           
         }}
       >
-        <Tab.Screen name="selector" component={Selector} 
-        
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Icon name="home" size={size} color={color} />
-          ),
-        }}
-        
+        <Tab.Screen 
+          name="selector" 
+          component={Selector} 
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <Icon name="home" size={size} color={color} />
+            ),
+          }}
         />
-        <Tab.Screen name="Matched" component={MatchedMovies} options={{unmountOnBlur: true}} 
-        
-        
-        options1={{
-          tabBarIcon: ({ color, size }) => (
-            <Icon name="check" size={size} color={color} />
-          ),
-        }}
-        
+
+        <Tab.Screen 
+          name="Matched" 
+          component={MatchedMovies} 
+          options={{
+            unmountOnBlur: true,
+            tabBarIcon: ({ color, size }) => (
+              <Icon name="check" size={size} color={color} />
+            ),
+          }}
         />
-        <Tab.Screen name="settings" component={Settings}
-        
-        
-        options2={{
-          tabBarIcon: ({ color, size }) => (
-            <Icon name="settings-helper" size={size} color={color} />
-          ),
-        }}
-        
+
+        <Tab.Screen 
+          name="settings" 
+          component={Settings}
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <Icon name="settings-helper" size={size} color={color} />
+            ),
+          }}
         />
       </Tab.Navigator>
     </NavigationContainer>
