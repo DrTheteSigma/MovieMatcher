@@ -1,25 +1,22 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, Clipboard} from 'react-native';
-import SyncStorage from 'sync-storage';
+import { StyleSheet, View, Text, TouchableOpacity, Clipboard, Alert } from 'react-native';
+import useStore from '../stores/useStore';
 
-
-const Settings = ({ route }) => {
-  const result = SyncStorage.get('id');
-  const playerNum = SyncStorage.get('PlayerNum');
+const Settings = () => {
+  const { id, playerNum } = useStore(); // Use Zustand store
 
   const handleCopy = () => {
-    Clipboard.setString(result);
-    alert("Room ID was saved to ClipBoard, Enjoy sharing with friends :) ")
+    Clipboard.setString(id);
+    Alert.alert("Room ID was saved to Clipboard", "Enjoy sharing with friends :)");
     // Show a feedback or notification to the user indicating that the text has been copied
   };
-  
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Settings</Text>
       <TouchableOpacity onPress={handleCopy} style={styles.settingItem}>
         <Text style={styles.settingLabel}>Room Number:</Text>
-        <Text style={styles.settingValue}>{result}</Text>
+        <Text style={styles.settingValue}>{id}</Text>
       </TouchableOpacity>
       <View style={styles.settingItem}>
         <Text style={styles.settingLabel}>Player Number:</Text>
