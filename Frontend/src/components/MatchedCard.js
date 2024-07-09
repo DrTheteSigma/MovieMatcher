@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { View, Text, Image, Button, StyleSheet } from 'react-native';
-import SyncStorage from 'sync-storage';
 
 function MatchedCard({ movies }) {
   const [index, setIndex] = useState(0);

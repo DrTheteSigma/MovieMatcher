@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
-import SyncStorage from 'sync-storage';
+import useStore from '../stores/useStore';
 
 const JoinRoom = ({ navigation }) => {
   const [roomId, setRoomId] = useState('');
   const [selectedUser, setSelectedUser] = useState('user1');
+  const { setId, setPlayerNum } = useStore();
 
   const handleJoinRoom = async () => {
     // Handle joining the room with the entered ID
@@ -24,8 +25,8 @@ const JoinRoom = ({ navigation }) => {
     if (data !== true) {
       alert('Please enter a correct Room ID');
     } else {
-      SyncStorage.set('id', roomId);
-      SyncStorage.set('PlayerNum', selectedUser === 'user1' ? 1 : 2);
+      setId(roomId);
+      setPlayerNum(selectedUser === 'user1' ? 1 : 2);
       navigation.navigate('Menu');
     }
   };
